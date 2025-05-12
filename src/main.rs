@@ -4,12 +4,12 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("Problem pasring arguments: {err}");
+        eprintln!("Problem pasring arguments: {err}");
         process::exit(1);
     });
 
     if let Err(er) = minigrep::run(config) {
-        println!("Application error {er}");
+        eprintln!("Application error: {er}");
         process::exit(1);
     }
 }
